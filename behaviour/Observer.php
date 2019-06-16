@@ -22,7 +22,7 @@ class Observer1 implements Observer
     }
 }
 
-class Subject
+abstract class Subject
 {
     protected $obsevers=[];
 
@@ -32,6 +32,8 @@ class Subject
     }
 
     //removeObserver
+    abstract function setState($s);
+    abstract function getState();
 
     public function notifyAllObservers()
     {

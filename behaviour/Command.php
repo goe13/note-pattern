@@ -55,8 +55,7 @@ class Client
 {
     public function do()
     {
-        $command = new ConcreteCommand(new Receiver());
-        $invoke = new Invoke($command);
+        $invoke = new Invoke(new ConcreteCommand(new Receiver()));
 
         $invoke->call();
     }

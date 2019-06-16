@@ -31,7 +31,7 @@ class FlyWeightFactory
         if(isset(self::$map[$key])){
             return self::$map[$key];
         }else{
-            self::$map[$key] = new f();
+            self::$map[$key] = new ConcreteFlyWeight();
             return self::$map[$key];
         }
     }
