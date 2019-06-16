@@ -49,9 +49,52 @@ class DangerBridge extends Info{
     }
 }
 //调用桥接
-$email = new Email();
-$CommonEmail  = new CommonBridge($email);
+$CommonEmail  = new CommonBridge(new Email());
 $CommonEmail->send('Tom','XXXXX');
 
 $DangerSms  = new DangerBridge(new Sms());
 $DangerSms->send('Lucy','OOOOOOO');
+
+
+
+//基本类
+interface Implementor
+{
+    function operation();
+}
+
+class Implementor1
+{
+    public function operation()
+    {
+        echo "this is opration1\n";
+    }
+}
+class Implementor2
+{
+    public function operation()
+    {
+        echo "this is opration2\n";
+    }
+}
+
+
+abstract class Abstraction
+{
+    private $implementor;//*用以连接
+
+    public function operation()
+    {
+        $this->implementor->operation();
+    }
+
+    abstract function setImplementor(Implementor $i);
+}
+
+class Abstraction1 extends Abstraction
+{
+    function setImplementor(Implementor $i)
+    {
+        $this->implementor = $i;
+    }
+}
